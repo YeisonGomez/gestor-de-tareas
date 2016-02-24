@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gestor de Tareas</title>
+</head>
+
+<body ng-app="nombre_app" ng-cloak>
+	<div ng-controller="listworkCtrl" ng-init="cargar">
+		
+		<input type="text" ng-model="task.id" placeholder="id">
+		<input type="text" ng-model="task.subject" placeholder="Contenido">
+		<input type="text" ng-model="task.detail" placeholder="Asunto">
+
+		<button ng-click="postTask(task)">Subir</button>
+		
+
+		<table border = "1">
+			<thead>
+				<td>id</td>
+				<td>Asunto</td>
+				<td>Detalle</td>		
+			</thead>
+			<tr ng-repeat = "task in getAllTask">
+				<td>
+					{{task.id}}:
+				</td>
+				<td>
+					{{task.subject}}
+				</td>
+				<td>{{task.detail}}</td>
+				<td>
+					<button ng-click="putTask(task, $index)">Actualizar</button>
+				</td>
+				
+			</tr>	
+		</table>
+	</div>	
+</body>
+
+	<script src="lib/angular/angular.min.js"></script>
+
+	<script src="js/controllers/controller_task.js"></script>
+
+	<script src="js/services/service_task.js"></script>
+</html>
